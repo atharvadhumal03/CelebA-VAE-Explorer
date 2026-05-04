@@ -1,0 +1,1 @@
+# Evaluation: FID score, reconstruction quality, semantic clustering, NN accuracy
