@@ -1,0 +1,39 @@
+# LatentLens — Default Hyperparameters
+# This file is the single source of truth for all training config.
+# Override individual keys via CLI args in train.py.
+
+model:
+  latent_dim: 128
+  beta: 1.0                  # KL weight; 1.0 = standard VAE
+
+data:
+  root: data/celeba
+  image_size: 128            # resize to 128x128
+  batch_size: 128
+  num_workers: 4
+
+training:
+  epochs: 100
+  lr: 0.001
+  betas: [0.9, 0.999]        # Adam betas
+  scheduler_factor: 0.5      # ReduceLROnPlateau reduction factor
+  scheduler_patience: 5      # epochs without val improvement before LR drop
+  seed: 42
+
+checkpointing:
+  output_dir: outputs/checkpoints
+  keep_last_n: 5             # rolling checkpoints to retain
+
+wandb:
+  project: latentlens
+  entity: null               # set to your W&B username/team
+
+evaluation:
+  fid_n_samples: 10000
+  nn_n_queries: 500
+  tsne_perplexity: 30
+  tsne_n_iter: 1000
+
+smoke_test:
+  n_images: 1000
+  epochs: 2

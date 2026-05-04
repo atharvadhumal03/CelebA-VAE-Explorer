@@ -1,0 +1,76 @@
+# ── Data ──────────────────────────────────────────────────────────────────────
+data/
+data/celeba/
+
+# ── Model artifacts ───────────────────────────────────────────────────────────
+outputs/
+outputs/checkpoints/
+outputs/faiss/
+outputs/latents/
+outputs/tsne/
+outputs/recon/
+*.pt
+*.pth
+*.bin
+*.npy
+
+# ── W&B ───────────────────────────────────────────────────────────────────────
+wandb/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+# logs/ directory is tracked so SLURM output is visible on GitHub
+*.log
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+.env
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Node / Frontend ───────────────────────────────────────────────────────────
+node_modules/
+app/frontend/dist/
+app/frontend/.vite/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── IDEs ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+.dockerignore
+
+# ── Secrets / env ─────────────────────────────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+
+# ── Claude / AI context files ─────────────────────────────────────────────────
+CLAUDE.md
+context.md
+docs/
+
+# ── Keep empty directories ────────────────────────────────────────────────────
+!data/.gitkeep
+!outputs/.gitkeep
