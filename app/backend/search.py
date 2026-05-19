@@ -70,5 +70,7 @@ def search(query_mu: np.ndarray, k: int = 5) -> list[dict]:
 
 def get_tsne_data() -> dict:
     """Return the precomputed t-SNE payload for the /tsne endpoint."""
-    _load_artifacts()
+    global _tsne_data
+    if _tsne_data is None:
+        _load_artifacts()
     return _tsne_data
