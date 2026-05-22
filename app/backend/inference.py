@@ -1,6 +1,7 @@
 import base64
 import io
 import os
+import platform
 
 import torch
 from huggingface_hub import hf_hub_download
@@ -9,6 +10,11 @@ from torchvision import transforms
 
 from src.model import VAE
 
+# On macOS, faiss-cpu and PyTorch ship competing OpenMP runtimes that crash
+# when torch uses multiple threads after a faiss search call.
+# Single-threading torch on macOS prevents the conflict; no effect on Linux.
+if platform.system() == "Darwin":
+    torch.set_num_threads(1)
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
