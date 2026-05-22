@@ -11,7 +11,9 @@ scipy>=1.12.0
 scikit-learn>=1.4.0          # t-SNE
 
 # ── Similarity search ─────────────────────────────────────────────────────────
-faiss-gpu>=1.7.4             # use faiss-cpu if no GPU available
+# HPC (Linux + CUDA): pip install faiss-gpu
+# macOS / CPU-only:   pip install faiss-cpu
+faiss-gpu>=1.7.4
 
 # ── Experiment tracking ───────────────────────────────────────────────────────
 wandb>=0.16.0
