@@ -41,7 +41,13 @@ def init_wandb(cfg, resume_run_id: str | None = None):
         init_kwargs["id"] = resume_run_id
         init_kwargs["resume"] = "must"
 
-    run = wandb.init(**init_kwargs)
+    try:
+        run = wandb.init(**init_kwargs)
+    except Exception as e:
+        print(f"[W&B] init failed ({e}) — retrying in offline mode.")
+        os.environ["WANDB_MODE"] = "offline"
+        init_kwargs["mode"] = "offline"
+        run = wandb.init(**init_kwargs)
     return run
 
 
