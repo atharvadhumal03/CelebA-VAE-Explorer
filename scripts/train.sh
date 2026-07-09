@@ -8,6 +8,7 @@
 # Always pull latest code before running
 git pull
 
+source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate latentlens
 
 # Auto-resume from latest checkpoint if one exists
@@ -15,8 +16,8 @@ LATEST_CKPT=$(ls -t outputs/checkpoints/checkpoint_epoch*.pt 2>/dev/null | head 
 
 if [ -n "$LATEST_CKPT" ]; then
     echo "Resuming from checkpoint: $LATEST_CKPT"
-    python src/train.py --config configs/default.yaml --resume "$LATEST_CKPT"
+    python -m src.train --config configs/default.yaml --resume "$LATEST_CKPT"
 else
     echo "Starting fresh training run"
-    python src/train.py --config configs/default.yaml
+    python -m src.train --config configs/default.yaml
 fi
